@@ -1,0 +1,43 @@
+@import "tailwindcss";
+/* clip.css or global.css */
+/* clip.css or global.css */
+.bg-custom-one{
+  background-color: #FFFFFF;
+}
+
+.bg-custom-two {
+  background-color: #F9F6F7;
+}
+.bg-custom-three {
+  background-color: #FFE8D6;
+}
+
+.bg-custom-four {
+  background-color: #FF971D;
+}
+
+body {
+  /* Main background color for the "paper" */
+  background-color: #f8f8f8; /* Light off-white, like paper */
+
+  /* Horizontal lines (blue/red for notebook) */
+  background-image:
+    repeating-linear-gradient(
+      #e0e0e0 0, /* Light grey for regular lines */
+      #e0e0e0 1px,
+      transparent 1px,
+      transparent 20px /* Adjust 20px for line spacing */
+    ),
+    repeating-linear-gradient(
+      90deg, /* Vertical lines (often red for margin) */
+      #ffcccc 0, /* Light red for margin */
+      #ffcccc 1px,
+      transparent 1px,
+      transparent 20px /* Adjust 20px for column spacing */
+    );
+  background-size: 100% 20px, 20px 100%; /* Match height of horizontal lines, width of vertical lines */
+  background-position: 0 0, 40px 0; /* Adjust 40px for margin offset */
+
+  /* Optional: Add a subtle border or shadow to mimic a page */
+  border-left: 2px solid #ccc; /* Or a box-shadow */
+}
