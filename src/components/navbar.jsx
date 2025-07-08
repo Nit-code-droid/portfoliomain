@@ -6,10 +6,12 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '#home' },
+  { name: 'Academics', href: '#academics' },
+  { name: 'Tech Stack', href: '#techstack' },
+  { name: 'Trainings', href: '#trainings' },
+  { name: 'Achievements', href: '#achievements' },
+  { name: 'Projects', href: '#projects' }
   ];
 
   useEffect(() => {

@@ -1,89 +1,83 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+const TechStack = () => {
+  const skillCategories = [
+    
+   {
+  icon: '🧑‍💻',
+  title: 'Languages',
+  skills: ['Java', 'JavaScript', 'Python', 'C++', 'SQL', 'HTML', 'CSS'],
+  color: 'bg-yellow-100 border-yellow-400'
+},
+{
+  icon: '🌐',
+  title: 'Web Development',
+  skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'MERN Stack', 'Redux Toolkit', 'Recharts.js', 'Framer Motion', 'REST APIs'],
+  color: 'bg-orange-100 border-orange-400'
+},
+{
+  icon: '🤖',
+  title: 'Data Science & ML',
+  skills: ['Pandas', 'NumPy', 'Scikit-learn', 'NLTK', 'Matplotlib', 'Seaborn', 'Streamlit', 'Machine Learning', 'Data Analytics'],
+  color: 'bg-yellow-100 border-yellow-400'
+},
+{
+  icon: '🛠️',
+  title: 'Tools',
+  skills: ['VS Code', 'Postman', 'Figma', 'Jira', 'Slack', 'Tableau', 'Power BI', 'Excel', 'Git'],
+  color: 'bg-orange-100 border-orange-400'
+}
 
-// Badge Component
-const TechBadge = ({ children }) => (
-  <span className="
-    inline-flex items-center justify-center
-    bg-indigo-100 text-indigo-800 text-sm font-medium
-    px-3 py-1 rounded-full shadow-sm /* Styling for the badge */
-    transition-all duration-200 ease-in-out
-    hover:bg-indigo-200 hover:scale-105 /* Hover effects for interaction */
-  ">
-    {children}
-  </span>
-);
-
-// Main TechStackCategories component
-const TechStackCategories = () => {
-  // Define your tech stack items categorized as provided in the image
-  const techStack = {
-    "Web & Software Development": [
-      "Java",
-      "JavaScript",
-      "C++",
-      "HTML",
-      "CSS",
-      "MERN Stack (MongoDB, Express.js, React.js, Node.js)",
-      "REST APIs",
-      "Redux Toolkit",
-      "Recharts.js",
-      "Framer Motion"
-    ],
-    "Machine Learning & Data Science": [
-      "Python",
-      "SQL",
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
-      "NLTK",
-      "Matplotlib",
-      "Seaborn",
-      "Streamlit",
-      "Tableau",
-      "Power BI",
-      "Excel",
-      "Machine Learning",
-      "Data Analytics"
-    ]
-  };
+  ];
 
   return (
-    <div className="
-      max-w-4xl mx-auto p-6 sm:p-8 lg:p-10 /* Responsive max-width and padding */
-      bg-gradient-to-br from-gray-50 to-gray-100 /* Subtle gradient background */
-      rounded-2xl shadow-xl border border-gray-200 /* Rounded corners, shadow, and border */
-      flex flex-col items-center /* Center content horizontally */
-      text-center space-y-8 /* Spacing between sections */
-      min-h-[400px] /* Ensure a minimum height for the component container */
-    ">
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6">
-        My Tech Stack
-      </h2>
+     <motion.div
+  initial={{ opacity: 0, y: 200 }} // Starts invisible and significantly further below
+  whileInView={{ opacity: 1, y: 0 }}   // Ends visible at its natural position
+  viewport={{ once: true, amount: 0.2 }} // Triggers earlier (when 40% of component is in view)
+  transition={{
+    duration: 1.2, // Make it slightly longer to emphasize the travel distance
+    ease: "easeOut",
+    type: "spring", // Use a spring physics animation for a more dynamic "pop"
+    damping: 10,    // Less damping means more bounce
+    stiffness: 70   // Lower stiffness means more "stretch"
+  }}
+>
+    <div className="mt-5 p-6 max-w-3xl mx-auto">
+      {/* Compact Header */}
+      <div className="flex items-center justify-center mb-6">
+        <div className="bg-yellow-400 w-8 h-8 rounded mr-3"></div>
+        <h1 className="text-2xl font-bold text-gray-800">My Tech Stack</h1>
+      </div>
 
-      {/* Grid container for categories to allow them to go side-by-side on larger screens */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-        {Object.entries(techStack).map(([category, items]) => (
+      {/* Compact Skills Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+        {skillCategories.map((category, index) => (
           <div
-            key={category}
-            className="
-              bg-white p-6 rounded-xl shadow-md border border-gray-100
-              flex flex-col items-center /* Center content in category box */
-            "
+            key={index}
+            className={`${category.color} border-l-4 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200`}
           >
-            <h3 className="text-2xl font-bold text-indigo-700 mb-4 border-b-2 border-indigo-300 pb-2">
-              {category}
-            </h3>
-            {/* Container for badges: flex-wrap to arrange horizontally and wrap */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {items.map((item, index) => (
-                <TechBadge key={index}>{item}</TechBadge>
+            <div className="flex items-center mb-3">
+              <span className="text-lg mr-2">{category.icon}</span>
+              <h3 className="text-sm font-semibold text-gray-800">{category.title}</h3>
+            </div>
+            
+            <div className="flex flex-wrap gap-1">
+              {category.skills.map((skill, skillIndex) => (
+                <span
+                  key={skillIndex}
+                  className="bg-white bg-opacity-70 rounded px-2 py-1 text-xs font-medium text-gray-700 hover:bg-opacity-90 transition-colors duration-200"
+                >
+                  {skill}
+                </span>
               ))}
             </div>
           </div>
         ))}
       </div>
     </div>
+    </motion.div>
   );
 };
 
-export default TechStackCategories;
+export default TechStack;
